@@ -29,16 +29,22 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS - More permissive for development
-app.use(cors({
-  origin: true, // Allow all origins in development
+// CORS configuration
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow all origins for now - in production, replace with your frontend URL
+    callback(null, true);
+  },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
-}));
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token', 'Accept'],
+  exposedHeaders: ['x-auth-token']
+};
+
+app.use(cors(corsOptions));
 
 // Handle CORS preflight requests
-app.options('*', cors());
+app.options('*', cors(corsOptions));
 
 // Body parser middleware
 app.use(express.json({ limit: '10mb' }));
