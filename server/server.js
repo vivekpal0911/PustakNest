@@ -72,9 +72,23 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
+// Root route handler
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Welcome to the Online Bookstore API',
+    status: 'running',
+    environment: process.env.NODE_ENV || 'development',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// 404 handler - must be the last route
 app.use('*', (req, res) => {
-  res.status(404).json({ message: 'Route not found' });
+  res.status(404).json({ 
+    success: false,
+    message: 'Route not found',
+    path: req.originalUrl 
+  });
 });
 
 app.listen(PORT, () => {
