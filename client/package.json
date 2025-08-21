@@ -1,0 +1,31 @@
+{
+  "name": "bookstore-client",
+  "version": "1.0.0",
+  "description": "Frontend for MERN Online Bookstore",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bootstrap": "^5.2.3",
+    "chart.js": "^4.3.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
+    "react-icons": "^4.10.1",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.3.0",
+    "react-toastify": "^9.1.3"
+  },
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^4.5.14"
+  }
+}
